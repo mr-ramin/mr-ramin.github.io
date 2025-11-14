@@ -13,7 +13,7 @@
     }
 
     p {
-      font-size: 90px;
+      font-size: 100px;
       margin: 0;
       text-align: center;
       font-weight: bold;
@@ -27,53 +27,39 @@
       color: transparent;
 
       animation: blink 1.2s infinite alternate,
-                 glow 3s infinite linear;
-      
-      text-shadow:
-        0 0 10px red,
-        0 0 20px orange,
-        0 0 30px yellow,
-        0 0 40px green,
-        0 0 50px cyan,
-        0 0 60px blue,
-        0 0 70px purple;
+                 ledcolor 2s infinite linear;
     }
 
     @keyframes blink {
       0%   { opacity: 1; }
-      100% { opacity: 0.35; }
+      100% { opacity: 0.4; }
     }
 
-    @keyframes glow {
+    @keyframes ledcolor {
       0% {
         text-shadow:
-          0 0 15px red,
-          0 0 30px orange,
-          0 0 45px yellow,
-          0 0 60px green,
-          0 0 75px cyan,
-          0 0 90px blue,
-          0 0 105px purple;
+          0 0 8px red,
+          0 0 16px red;
+      }
+      25% {
+        text-shadow:
+          0 0 8px yellow,
+          0 0 16px yellow;
       }
       50% {
         text-shadow:
-          0 0 15px purple,
-          0 0 30px blue,
-          0 0 45px cyan,
-          0 0 60px green,
-          0 0 75px yellow,
-          0 0 90px orange,
-          0 0 105px red;
+          0 0 8px lime,
+          0 0 16px lime;
+      }
+      75% {
+        text-shadow:
+          0 0 8px cyan,
+          0 0 16px cyan;
       }
       100% {
         text-shadow:
-          0 0 15px red,
-          0 0 30px orange,
-          0 0 45px yellow,
-          0 0 60px green,
-          0 0 75px cyan,
-          0 0 90px blue,
-          0 0 105px purple;
+          0 0 8px red,
+          0 0 16px red;
       }
     }
   </style>
