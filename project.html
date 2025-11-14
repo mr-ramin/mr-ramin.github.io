@@ -56,7 +56,7 @@
             max-width: 600px;
         }
 
-        .start-btn {
+        .start-btn, .restart-btn {
             background: linear-gradient(135deg, #2980b9 0%, #2c3e50 100%);
             color: white;
             border: none;
@@ -68,7 +68,7 @@
             margin-top: 30px;
         }
 
-        .start-btn:hover {
+        .start-btn:hover, .restart-btn:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(41, 128, 185, 0.4);
         }
@@ -76,35 +76,20 @@
         .header {
             background: linear-gradient(135deg, #0c2461 0%, #1e3799 100%);
             color: white;
-            padding: 30px;
+            padding: 20px;
             text-align: center;
             position: relative;
-        }
-
-        .stats {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-            font-size: 22px;
-        }
-
-        .stat-item {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 12px 20px;
-            border-radius: 25px;
-            backdrop-filter: blur(10px);
-            font-size: 18px;
+            display: none;
         }
 
         .timer {
             background: #e74c3c;
             color: white;
-            padding: 15px 30px;
+            padding: 12px 20px;
             border-radius: 30px;
             font-weight: bold;
-            margin-top: 20px;
             display: inline-block;
-            font-size: 22px;
+            font-size: 18px;
             box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
         }
 
@@ -130,7 +115,7 @@
         .options-container {
             display: grid;
             gap: 15px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .option {
@@ -176,10 +161,10 @@
         }
 
         .btn {
-            padding: 18px 35px;
+            padding: 15px 30px;
             border: none;
             border-radius: 12px;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -217,21 +202,21 @@
         }
 
         .result-section {
-            padding: 50px;
+            padding: 40px;
             text-align: center;
             display: none;
         }
 
         .score-circle {
-            width: 180px;
-            height: 180px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             background: linear-gradient(135deg, #2980b9 0%, #2c3e50 100%);
-            margin: 0 auto 40px;
+            margin: 0 auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 42px;
+            font-size: 36px;
             font-weight: bold;
             color: white;
             box-shadow: 0 10px 25px rgba(41, 128, 185, 0.3);
@@ -239,31 +224,31 @@
 
         .result-details {
             background: #2c3e50;
-            padding: 30px;
+            padding: 25px;
             border-radius: 20px;
-            margin: 30px 0;
+            margin: 20px 0;
             text-align: right;
         }
 
         .detail-item {
-            margin: 15px 0;
-            font-size: 22px;
+            margin: 10px 0;
+            font-size: 18px;
             color: #ecf0f1;
         }
 
         .time-up-message {
             background: #e74c3c;
             color: white;
-            padding: 25px;
+            padding: 20px;
             border-radius: 15px;
-            margin: 25px 0;
-            font-size: 22px;
+            margin: 20px 0;
+            font-size: 18px;
         }
 
         .loading {
             text-align: center;
-            padding: 60px;
-            font-size: 24px;
+            padding: 50px;
+            font-size: 20px;
             color: #3498db;
         }
 
@@ -274,17 +259,12 @@
             }
             
             .question-section {
-                padding: 25px;
+                padding: 20px;
             }
             
             .btn {
-                padding: 15px 25px;
-                font-size: 18px;
-            }
-            
-            .stats {
-                flex-direction: column;
-                gap: 15px;
+                padding: 12px 20px;
+                font-size: 16px;
             }
             
             .start-title {
@@ -292,7 +272,7 @@
             }
             
             .start-description {
-                font-size: 18px;
+                font-size: 16px;
             }
         }
     </style>
@@ -311,14 +291,8 @@
             <button class="start-btn" onclick="startQuiz()">شروع مسابقه 🚀</button>
         </div>
 
-        <div class="header" id="quiz-header" style="display: none;">
-            <h1>🎯 مسابقه کوییز</h1>
+        <div class="header" id="quiz-header">
             <div class="timer" id="timer">02:00</div>
-            <div class="stats">
-                <div class="stat-item">✅ صحیح: <span id="correct-count">0</span></div>
-                <div class="stat-item">❌ غلط: <span id="wrong-count">0</span></div>
-                <div class="stat-item">📊 سوال: <span id="current-question">1</span>/10</div>
-            </div>
         </div>
 
         <div class="question-section" id="question-section" style="display: none;">
@@ -336,7 +310,7 @@
             </div>
         </div>
 
-        <div class="result-section" id="result-section" style="display: none;">
+        <div class="result-section" id="result-section">
             <div class="score-circle" id="final-score">0</div>
             <h2>کارنامه نهایی شما</h2>
             
@@ -345,9 +319,10 @@
                 <div class="detail-item">❌ پاسخ‌های غلط: <span id="result-wrong">0</span></div>
                 <div class="detail-item">📈 امتیاز خالص: <span id="net-score">0</span></div>
                 <div class="detail-item">⏱ زمان باقیمانده: <span id="time-left">0</span> ثانیه</div>
+                <div class="detail-item">❓ پاسخ داده نشده: <span id="unanswered">0</span></div>
             </div>
 
-            <button class="btn btn-success" onclick="restartQuiz()">🎯 چالش مجدد</button>
+            <button class="btn btn-success restart-btn" onclick="restartQuiz()">🎯 چالش مجدد</button>
         </div>
     </div>
 
@@ -365,11 +340,16 @@
         function startQuiz() {
             quizStarted = true;
             document.getElementById('start-screen').style.display = 'none';
-            document.getElementById('quiz-header').style.display = 'none';
+            document.getElementById('quiz-header').style.display = 'block';
             document.getElementById('question-section').style.display = 'block';
-            updateStats();
-            startTimer();
+            correctCount = 0;
+            wrongCount = 0;
+            currentQuestionIndex = 0;
+            userAnswers = new Array(10).fill(null);
+            timeLeft = 120;
+            updateTimerDisplay();
             loadQuestions();
+            startTimer();
         }
 
         async function loadQuestions() {
@@ -383,17 +363,15 @@
                 displayCurrentQuestion();
             } catch (error) {
                 document.getElementById('loading').innerHTML = 'خطا در بارگذاری سوالات! لطفا صفحه را رفرش کنید.';
-                console.error('Error loading questions:', error);
             }
         }
 
         function startTimer() {
+            clearInterval(timer);
             timer = setInterval(() => {
                 timeLeft--;
                 updateTimerDisplay();
-                if (timeLeft <= 0) {
-                    endQuizDueToTime();
-                }
+                if (timeLeft <= 0) endQuizDueToTime();
             }, 1000);
         }
 
@@ -401,12 +379,11 @@
             const minutes = Math.floor(timeLeft / 60);
             const seconds = timeLeft % 60;
             document.getElementById('timer').textContent = 
-                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                `${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
         }
 
         function endQuizDueToTime() {
             clearInterval(timer);
-            document.getElementById('time-left').textContent = '0';
             showResults();
             const resultSection = document.getElementById('result-section');
             const timeUpMessage = document.createElement('div');
@@ -418,23 +395,19 @@
         function selectRandomQuestions() {
             const shuffled = [...allQuestions].sort(() => 0.5 - Math.random());
             selectedQuestions = shuffled.slice(0, 10);
-            userAnswers = new Array(selectedQuestions.length).fill(null);
         }
 
         function displayCurrentQuestion() {
             if (selectedQuestions.length === 0) return;
             const question = selectedQuestions[currentQuestionIndex];
             document.getElementById('question-text').textContent = question.question;
-            document.getElementById('current-question').textContent = currentQuestionIndex + 1;
             document.getElementById('question-number').textContent = `سوال شماره ${currentQuestionIndex + 1}`;
             const optionsContainer = document.getElementById('options-container');
             optionsContainer.innerHTML = '';
             question.options.forEach((option, index) => {
                 const optionElement = document.createElement('div');
                 optionElement.className = 'option';
-                if (userAnswers[currentQuestionIndex] === index) {
-                    optionElement.classList.add('selected');
-                }
+                if (userAnswers[currentQuestionIndex] === index) optionElement.classList.add('selected');
                 optionElement.textContent = option;
                 optionElement.onclick = () => selectOption(index);
                 optionsContainer.appendChild(optionElement);
@@ -443,76 +416,56 @@
         }
 
         function selectOption(optionIndex) {
-            const currentAnswer = userAnswers[currentQuestionIndex];
             const question = selectedQuestions[currentQuestionIndex];
-            if (currentAnswer !== null) {
-                if (currentAnswer === question.correct) correctCount--;
+            if (userAnswers[currentQuestionIndex] !== null) {
+                if (userAnswers[currentQuestionIndex] === question.correct) correctCount--;
                 else wrongCount--;
             }
             userAnswers[currentQuestionIndex] = optionIndex;
             if (optionIndex === question.correct) correctCount++;
             else wrongCount++;
-            updateStats();
             displayCurrentQuestion();
-            if (currentQuestionIndex === selectedQuestions.length - 1) {
-                setTimeout(() => { showResults(); }, 1000);
-            }
-        }
-
-        function updateStats() {
-            document.getElementById('correct-count').textContent = correctCount;
-            document.getElementById('wrong-count').textContent = wrongCount;
         }
 
         function updateNavigationButtons() {
-            document.getElementById('prev-btn').style.display = currentQuestionIndex === 0 ? 'none' : 'block';
+            const prevBtn = document.getElementById('prev-btn');
             const nextBtn = document.getElementById('next-btn');
+            prevBtn.style.display = currentQuestionIndex === 0 ? 'none' : 'block';
             nextBtn.textContent = currentQuestionIndex === selectedQuestions.length - 1 ? 'پایان مسابقه 🏁' : 'سوال بعدی ➡';
+            prevBtn.style.order = 0;
+            nextBtn.style.order = 1;
         }
 
         function nextQuestion() {
-            if (currentQuestionIndex < selectedQuestions.length - 1) {
-                currentQuestionIndex++;
-                displayCurrentQuestion();
-            } else {
-                showResults();
-            }
+            if (currentQuestionIndex < selectedQuestions.length - 1) currentQuestionIndex++;
+            else showResults();
+            displayCurrentQuestion();
         }
 
         function previousQuestion() {
-            if (currentQuestionIndex > 0) {
-                currentQuestionIndex--;
-                displayCurrentQuestion();
-            }
+            if (currentQuestionIndex > 0) currentQuestionIndex--;
+            displayCurrentQuestion();
         }
 
         function showResults() {
             clearInterval(timer);
-            const netScore = Math.max(0, correctCount - Math.floor(wrongCount / 2));
-            const finalScore = (netScore / selectedQuestions.length) * 100;
+            let unanswered = userAnswers.filter(a => a === null).length;
+            let netScore = Math.max(0, correctCount - Math.floor(wrongCount/2));
+            let finalScore = (netScore / selectedQuestions.length) * 100;
             document.getElementById('final-score').textContent = Math.round(finalScore);
             document.getElementById('result-correct').textContent = correctCount;
             document.getElementById('result-wrong').textContent = wrongCount;
             document.getElementById('net-score').textContent = netScore;
             document.getElementById('time-left').textContent = timeLeft;
+            document.getElementById('unanswered').textContent = unanswered;
             document.getElementById('question-section').style.display = 'none';
-            document.getElementById('quiz-header').style.display = 'block';
+            document.getElementById('quiz-header').style.display = 'none';
             document.getElementById('result-section').style.display = 'block';
         }
 
         function restartQuiz() {
-            currentQuestionIndex = 0;
-            userAnswers = [];
-            correctCount = 0;
-            wrongCount = 0;
-            timeLeft = 120;
-            quizStarted = false;
             document.getElementById('result-section').style.display = 'none';
-            document.getElementById('start-screen').style.display = 'flex';
-            document.getElementById('quiz-header').style.display = 'none';
-            document.getElementById('question-section').style.display = 'none';
-            updateStats();
-            updateTimerDisplay();
+            startQuiz();
         }
     </script>
 </body>
