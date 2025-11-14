@@ -1,70 +1,39 @@
-<html>
-<head>
-  <meta charset="utf-8" />
-  <title>Ramin</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #111;
-    }
+<html>  
+<head>  
+  <meta charset="utf-8" />  
+  <title>Ramin</title>  
+  <style>  
+    body {  
+      margin: 0;  
+      height: 100vh;  
+      display: flex;  
+      justify-content: center;  
+      align-items: center;  
+      background: #111;  
+    }  p {  
+  font-size: 70px;  
+  margin: 0;  
+  text-align: center;  
+  font-weight: bold;  
+  background: linear-gradient(  
+    90deg,  
+    red, orange, yellow, green, cyan, blue, purple,  
+    hotpink, lime, turquoise  
+  );  
+  -webkit-background-clip: text;  
+  color: transparent;  
+  filter: brightness(1);  
+  animation: blink 1s infinite alternate;  
+}  
 
-    p {
-      font-size: 90px;
-      margin: 0;
-      text-align: center;
-      font-weight: bold;
+@keyframes blink {  
+  0%   { filter: brightness(5.0); }  
+  100% { filter: brightness(0.1); }  
+}
 
-      background: linear-gradient(
-        90deg,
-        red, orange, yellow, green, cyan, blue, purple,
-        hotpink, lime, turquoise
-      );
-      -webkit-background-clip: text;
-      color: transparent;
-
-      animation: blink 1s infinite alternate,
-                 ledcolor 2s infinite linear;
-    }
-
-    @keyframes blink {
-      0%   { opacity: 1; }
-      100% { opacity: 0.3; }
-    }
-
-    @keyframes ledcolor {
-      0% {
-        text-shadow: 
-          0 0 6px red,
-          0 0 12px red;
-      }
-      25% {
-        text-shadow: 
-          0 0 6px yellow,
-          0 0 12px yellow;
-      }
-      50% {
-        text-shadow: 
-          0 0 6px lime,
-          0 0 12px lime;
-      }
-      75% {
-        text-shadow: 
-          0 0 6px cyan,
-          0 0 12px cyan;
-      }
-      100% {
-        text-shadow: 
-          0 0 6px red,
-          0 0 12px red;
-      }
-    }
-  </style>
-</head>
-<body>
-  <p>سلام داداش چطوری</p>
-</body>
+  </style>  
+</head>  
+<body>  
+  <p>سلام داداش چطوری</p>  
+</body>  
 </html>
