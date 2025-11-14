@@ -1,1 +1,150 @@
-<h1>Hi Ramin</h1>
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>لیست‌ها — تم مشکی-آبی</title>
+  <style>
+    /* تم مشکی-آبی */
+    :root{
+      --bg:#0b0f14;
+      --card:#0f1720;
+      --muted:#98a8c6;
+      --accent:#0b74de;
+      --accent-2:#0ea5a0;
+      --radius:12px;
+      --gap:1rem;
+      --maxw:960px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Noto Sans','IranSans',sans-serif;
+      background:linear-gradient(180deg,var(--bg),#071016);
+      color:var(--muted);
+      -webkit-font-smoothing:antialiased;
+      padding:2rem;
+    }
+
+    .wrap{max-width:var(--maxw);margin:0 auto;background:linear-gradient(180deg,var(--card),#08121a);border-radius:var(--radius);padding:1.25rem 1.5rem;box-shadow:0 10px 40px rgba(2,6,12,0.6);border:1px solid rgba(11,116,222,0.07)}
+
+    header{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
+    .logo{width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+    h1{font-size:1rem;color:white;margin:0}
+
+    main{display:grid;gap:1rem}
+    /* خارجى: دو مدل لیست — یکی ul و دیگری ol */
+    .models{display:grid;grid-template-columns:1fr;gap:1rem}
+    @media(min-width:720px){.models{grid-template-columns:1fr 1fr}}
+
+    .card{background:linear-gradient(180deg,#071017, #07151b);border-radius:10px;padding:1rem;border:1px solid rgba(255,255,255,0.03)}
+    .title{color:var(--accent);font-weight:600;margin:0 0 .5rem 0}
+
+    /* مدل اول: ul که داخلش سه لیست با استایل‌های مختلف قرار می‌گیرند */
+    ul.model-ul{padding:0;margin:0;list-style:none;display:flex;flex-direction:column;gap:0.75rem}
+    ul.model-ul > li{background:transparent;padding:.5rem;border-radius:8px;border:1px solid rgba(255,255,255,0.02)}
+
+    /* هر کدام از سه لیست تو در تو */
+    .nested{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:.5rem}
+
+    /* marker elements implemented with pseudo elements for full control */
+    .nested li{position:relative;padding-inline-start:2.4rem;color:var(--muted);}
+    .nested li::before{
+      content:"";
+      position:absolute;
+      inline-size:1rem;
+      block-size:1rem;
+      left:0.35rem;
+      top:.15rem;
+      border-radius:50%;
+    }
+
+    /* دایره تو پر */
+    .circle-filled li::before{background:var(--accent)}
+
+    /* دایره تو خالی */
+    .circle-hollow li::before{background:transparent;border:2px solid var(--accent);}
+
+    /* مربع تو پر -> تغییر شکل به مربع */
+    .square-filled li::before{border-radius:3px;background:var(--accent-2);}
+
+    /* لیست دوم: ordered (ol) با حروف الفبایی کوچک */
+    ol.model-ol{padding-inline-start:1.2rem;margin:0;color:var(--muted)}
+    ol.model-ol li{margin-bottom:.45rem}
+
+    /* دسترس‌پذیری: تمرکز */
+    a,button{outline-offset:3px}
+    :focus{outline:3px solid rgba(11,116,222,0.15);outline-offset:3px}
+
+    /* نمایش بهتر در موبایل */
+    .section-inner{display:flex;flex-direction:column;gap:.6rem}
+    .list-label{color:#cfe7ff;font-size:.95rem;margin:0 0 .4rem 0}
+
+    /* چاپ */
+    @media print{
+      body{background:white;color:black;padding:0}
+      .wrap{box-shadow:none;border-radius:0;border:0}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">آ</div>
+      <h1>نمونه لیست</h1>
+    </header>
+
+    <main>
+      <div class="models">
+        <!-- مدل اول: ul — داخلش ۳ لیست (دایره تو پر، دایره تو خالی، مربع تو پر) -->
+        <section class="card" aria-labelledby="m1">
+          <div class="section-inner">
+            <h2 id="m1" class="title">مدل (UL)</h2>
+            <ul class="model-ul" role="list">
+              <li>
+                <div class="list-label">دایره — تو پر</div>
+                <ul class="nested circle-filled" role="list">
+                  <li role="listitem">آیتم ۱</li>
+                  <li role="listitem">آیتم ۲</li>
+                  <li role="listitem">آیتم ۳</li>
+                </ul>
+              </li>
+
+              <li>
+                <div class="list-label">دایره — تو خالی</div>
+                <ul class="nested circle-hollow" role="list">
+                  <li role="listitem">آیتم ۱</li>
+                  <li role="listitem">آیتم ۲</li>
+                  <li role="listitem">آیتم ۳</li>
+                </ul>
+              </li>
+
+              <li>
+                <div class="list-label">مربع — تو پر</div>
+                <ul class="nested square-filled" role="list">
+                  <li role="listitem">آیتم ۱</li>
+                  <li role="listitem">آیتم ۲</li>
+                  <li role="listitem">آیتم ۳</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- مدل دوم: ordered list (ol) -->
+        <section class="card" aria-labelledby="m2">
+          <div class="section-inner">
+            <h2 id="m2" class="title">مدل (OL)</h2>
+            <ol class="model-ol" role="list">
+              <li role="listitem">a</li>
+              <li role="listitem">b</li>
+              <li role="listitem">c</li>
+            </ol>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
