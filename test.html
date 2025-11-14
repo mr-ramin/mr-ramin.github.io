@@ -13,7 +13,7 @@
     }
 
     p {
-      font-size: 100px;
+      font-size: 90px;
       margin: 0;
       text-align: center;
       font-weight: bold;
@@ -26,40 +26,40 @@
       -webkit-background-clip: text;
       color: transparent;
 
-      animation: blink 1.2s infinite alternate,
+      animation: blink 1s infinite alternate,
                  ledcolor 2s infinite linear;
     }
 
     @keyframes blink {
       0%   { opacity: 1; }
-      100% { opacity: 0.4; }
+      100% { opacity: 0.3; }
     }
 
     @keyframes ledcolor {
       0% {
-        text-shadow:
-          0 0 8px red,
-          0 0 16px red;
+        text-shadow: 
+          0 0 6px red,
+          0 0 12px red;
       }
       25% {
-        text-shadow:
-          0 0 8px yellow,
-          0 0 16px yellow;
+        text-shadow: 
+          0 0 6px yellow,
+          0 0 12px yellow;
       }
       50% {
-        text-shadow:
-          0 0 8px lime,
-          0 0 16px lime;
+        text-shadow: 
+          0 0 6px lime,
+          0 0 12px lime;
       }
       75% {
-        text-shadow:
-          0 0 8px cyan,
-          0 0 16px cyan;
+        text-shadow: 
+          0 0 6px cyan,
+          0 0 12px cyan;
       }
       100% {
-        text-shadow:
-          0 0 8px red,
-          0 0 16px red;
+        text-shadow: 
+          0 0 6px red,
+          0 0 12px red;
       }
     }
   </style>
