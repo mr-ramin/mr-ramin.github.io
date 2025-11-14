@@ -2,11 +2,39 @@
 <head>
   <meta charset="utf-8" />
   <title>Ramin</title>
-</head>
-  <body>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #111;
+    }
 
-    <p style="text-align:center; ,text-size:100">
-      <b>سلام</b>
-    </p>
-  </body>
+    p {
+      font-size: 70px;
+      margin: 0;
+      text-align: center;
+      font-weight: bold;
+      background: linear-gradient(
+        90deg,
+        red, orange, yellow, green, cyan, blue, purple,
+        hotpink, lime, turquoise
+      );
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: blink 1s infinite alternate;
+      text-shadow: 0 0 10px rgba(255,255,255,0.3);
+    }
+
+    @keyframes blink {
+      0%   { opacity: 1; }
+      100% { opacity: 0.3; }
+    }
+  </style>
+</head>
+<body>
+  <p>سلام</p>
+</body>
 </html>
